@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+<body>
+    <h1>This is not confused anymore</h1>
+    <p onclick="this.innerText = 'I am clicked'">I am a paragraph. Don't click me</p>
+
+    <script>
+        const myObj = {
+            name: 'Joy Mazumdar',
+            getFullName: function(){
+                console.log(this); /* function er vitor this mane Object represent kore*/
+                return 'Mr. ' + this.name;
+            }
+        }
+        myObj.getFullName();
+        /*Same object call another value return*/
+        const anotherObj = {
+            name: 'Ajoy Mazumdar'
+        }
+        anotherObj.getFullName = myObj.getFullName;
+        console.log(anotherObj.getFullName);
+        anotherObj.getFullName();
+        
+// this window return dibe
+        function add(a, b) {
+            console.log(this);
+            return a + b;
+        }
+        add(5, 6);
+
+        anotherObj.sum = add;
+        anotherObj.sum();
+
+// setTimeout er vitor this use kora jay
+        setTimeout(function(){
+            console.log(this);
+        },1000)
+    </script>
+</body>
+</html>
